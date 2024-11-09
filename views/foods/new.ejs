@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home..</a>
+        <% if(user) { %>
+          <a href="/users/<%=user._id%>/foods">View my Pantry</a>
+          <a href="/auth/sign-out">Sign Out</a>
+        <% } else { %>
+          <a href="/auth/sign-in">Sign In</a>
+          <a href="/auth/sign-up">Sign Up</a>
+        <% } %>
+      </nav>
+    <h1>Your new product!</h1>
+    <form action="/users/<%= user._id %>/foods" method="POST">
+    <div> 
+        <label for="product">Product Name:</label>
+        <input type="text" name="product" id="product" required>
+      </div>
+
+      <div> 
+        <label for="calories">Calories value:</label>
+        <input type="number" name="calories" id="calories" required>
+      </div>
+
+      <div> 
+        <label for="partOfDiet">Part of my diet:</label>
+        <input type="checkbox" name="partOfDiet" id="partOfDiet">
+      </div>
+
+      <div> 
+        <label for="notes">Notes:</label>
+        <input type="text" name="notes" id="notes">
+      </div>
+
+      <div> 
+        <label for="friendComment">friend comment:</label>
+        <input type="text" name="friendComment" id="friendComment">
+      </div>
+
+      <div> 
+        <button type="submit">Add New Product</button>
+      </div>
+    </form>
+    
+    <div> 
+    <button><a href="/">Back to CookBook</a></button>
+    </div>
+   
+    <div> 
+    <button><a href="/users/<%=user._id%>/foods">Back to pantry</a></button>
+    </div>
+</body>
+</html>

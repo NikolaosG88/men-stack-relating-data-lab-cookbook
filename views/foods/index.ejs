@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pantry</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home..</a>
+      <% if(user) { %>
+        <a href="/users/<%=user._id%>/foods">View my Pantry</a>
+        <a href="/auth/sign-out">Sign Out</a>
+      <% } else { %>
+        <a href="/auth/sign-in">Sign In</a>
+        <a href="/auth/sign-up">Sign Up</a>
+      <% } %>
+    </nav>
+    <h1>Welcome to my Pantry!</h1>
+    <a href="/users/<%=user._id%>/foods/new">Add a New Item, please</a>
+
+    <% pantry.forEach((food) => { %>
+      <h2><a href="/users/<%= user._id %>/pantry/<%= food._id %>">
+       <li> <%= food.product %></li>
+      </a></h2>
+      <% }) %>
+  </body>
+</html>

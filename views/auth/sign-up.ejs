@@ -6,6 +6,16 @@
   <title>Sign Up</title>
 </head>
 <body>
+  <nav>
+    <a href="/">Home..</a>
+    <% if(user) { %>
+      <a href="/users/<%=user._id%>/foods">View my Pantry</a>
+      <a href="/auth/sign-out">Sign Out</a>
+    <% } else { %>
+      <a href="/auth/sign-in">Sign In</a>
+      <a href="/auth/sign-up">Sign Up</a>
+    <% } %>
+  </nav>
   <h1>Create a new account!</h1>
   <form action="/auth/sign-up" method="POST">
     <label for="username">Username:</label>
@@ -17,8 +27,7 @@
       type="password"
       name="confirmPassword"
       id="confirmPassword"
-      required 
-    />
+      required />
     <button type="submit">Sign up</button>
   </form>
 </body>
