@@ -20,7 +20,7 @@
     <a href="/users/<%=user._id%>/foods/new">Add a New Item, please</a>
 
     <% pantry.forEach((food) => { %>
-      <h2><a href="/users/<%= user._id %>/pantry/<%= food._id %>">
+      <h2><a href="/users/<%= user._id %>/foods/<%= food._id %>">
        <li> <%= food.product %></li>
       </a></h2>
       <% }) %>

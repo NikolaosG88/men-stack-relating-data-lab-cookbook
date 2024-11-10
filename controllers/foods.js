@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
    });
 
 
-   router.post('/', async (req, res) => {
+   router.post("/", async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
         if (req.body.partOfDiet ==="on") {
@@ -38,6 +38,20 @@ router.get("/", async (req, res) => {
         console.log(error);
         res.redirect('/')
     }
+});
+
+router.get('/:foodId', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const food = currentUser.pantry.id(req.params.foodId);
+    res.render('foods/details.ejs', {
+      food: food,
+      user: currentUser
+    });
+  } catch (error) {
+    console.log(error);
+    res.redirect('/')
+  }
 });
 
 //__________________________________________//

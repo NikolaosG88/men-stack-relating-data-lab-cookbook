@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <% if (user) { %>
+          <a href="/users/<%= user._id %>/foods">View my Pantry</a>
+          <a href="/auth/sign-out">Sign Out</a>
+        <% } else { %>
+          <a href="/auth/sign-in">Sign In</a>
+          <a href="/auth/sign-up">Sign Up</a>
+        <% } %>
+    </nav>
+    
+    <h1>Product Details for <%= food.product %> </h1>
+    <ul>
+       <li>Product: <%= food.product %></li>
+       <li>Calories: <%= food.calories %></li>
+       <li>Part of Diet: <%= food.partOfDiet ? "Yes" : "No" %></li>
+       <li>Notes: <%= food.notes %></li>
+       <li>Friend's Comment: <%= food.friendComment %></li>
+    </ul>
+
+    <button> <a href="/users/<%= user._id %>/pantry/<%= food._id %>/edit">Edit App</a></button>
+    <br>
+
+    <button><a href="/users/<%= user._id %>/foods">Back to pantry</a></button>
+    <br>
+    
+    <form action="/users/<%= user._id %>/pantry/<%= food._id %>?_method=DELETE" method="POST">
+    <button type="submit">Delete App</button>
+    </form>
+</body>
+</html>
