@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= member.username %>'s Pantry</title>
+</head>
+<body>
+    <nav>
+        <a href="/">Home..</a>
+        <% if(user) { %>
+          <a href="/members/">Explore Other Pantrys..</a>
+          <a href="/users/<%=user._id%>/foods">View my Pantry</a>
+          <a href="/auth/sign-out">Sign Out</a>
+        <% } else { %>
+          <a href="/auth/sign-in">Sign In</a>
+          <a href="/auth/sign-up">Sign Up</a>
+        <% } %>
+      </nav>
+    <h1>Explore <%= member.username %>'s Pantry Collection</h1>
+  <section><a href="/members">Back to List of Members</a></section>
+    <div>
+      <% member.pantry.forEach(food => { %>
+          <div>
+            <h2><%= food.product %></h2>
+            <ul>
+              <li><strong>Product:</strong> <%= food.product %></li>
+              <li><strong>Calories:</strong> <%= food.calories %></li>
+              <li><strong>Part Of Diet:</strong> <%= food.partOfDiet ? 'Yes' : 'No' %></li>
+              <li><strong>Friend Comment:</strong> <%= food.friendComment %></li>
+            </ul>
+          </div>
+      <% }); %>
+    </div>
+    <a href="/members">Back to Members</a>
+</body>
+</html>

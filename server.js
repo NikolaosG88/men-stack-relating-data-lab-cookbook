@@ -12,6 +12,7 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 
 const authController = require("./controllers/auth.js");
 const foodsController = require("./controllers/foods.js");
+const membersController = require('./controllers/members');
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
@@ -19,6 +20,9 @@ mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
+
+app.set("view engine", "ejs");
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
@@ -42,6 +46,7 @@ app.get("/", (req, res) => {
 app.use("/auth", authController);
 app.use(isSignedIn);
 app.use("/users/:userId/foods", foodsController);
+app.use('/members', membersController); 
 
 
 //______________________________________________________________//

@@ -9,6 +9,7 @@
   <nav>
     <a href="/">Home..</a>
     <% if(user) { %>
+      <a href="/members/">Explore Other Pantrys..</a>
       <a href="/users/<%=user._id%>/foods">View my Pantry</a>
       <a href="/auth/sign-out">Sign Out</a>
     <% } else { %>
@@ -17,7 +18,7 @@
     <% } %>
   </nav>
 
-    <h1>Welcome to CookBook, philo</h1>
+    <h1>Welcome to CookBook, Philo</h1>
     
 </body>
 </html>

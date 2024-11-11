@@ -1,0 +1,28 @@
+const express = require('express');
+const router = express.Router();
+const User = require('../models/user.js');
+
+
+router.get('/', async (req, res) => {
+    try {
+        const members = await User.find();
+        res.render('members/listOfMembers', { members });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
+
+
+router.get('/:memberId', async (req, res) => {
+    try {
+      const member = await User.findById(req.params.memberId);
+      res.render('members/otherDiets', { member });
+    } catch (error) {
+      console.log(error);
+      res.redirect('/members');
+    }
+  });
+
+  module.exports = router;
