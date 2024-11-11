@@ -26,14 +26,20 @@
        <li>Friend's Comment: <%= food.friendComment %></li>
     </ul>
 
-    <button> <a href="/users/<%= user._id %>/pantry/<%= food._id %>/edit">Edit App</a></button>
+    <button> <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">Edit App</a></button>
     <br>
 
     <button><a href="/users/<%= user._id %>/foods">Back to pantry</a></button>
     <br>
     
-    <form action="/users/<%= user._id %>/pantry/<%= food._id %>?_method=DELETE" method="POST">
-    <button type="submit">Delete App</button>
+    <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST" onsubmit="return confirmDelete()">
+    <button type="submit">Delete Product</button>
     </form>
+
+    <script>
+      function confirmDelete() {
+        return confirm("Are you sure you want to delete this product from your collection?");
+      }
+    </script>
 </body>
 </html>

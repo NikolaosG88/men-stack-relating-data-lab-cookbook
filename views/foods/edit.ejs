@@ -16,35 +16,35 @@
           <a href="/auth/sign-up">Sign Up</a>
         <% } %>
       </nav>
-    <h1>Your new product!</h1>
-    <form action="/users/<%= user._id %>/foods" method="POST">
+    <h1>Edit <%= food.product %>!</h1>
+    <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
     <div> 
         <label for="product">Product Name:</label>
-        <input type="text" name="product" id="product" required>
+        <input type="text" name="product" id="product" value="<%= food.product %>" required>
       </div>
 
       <div> 
         <label for="calories">Calories value:</label>
-        <input type="number" name="calories" id="calories" required>
+        <input type="number" name="calories" id="calories" value="<%= food.calories %>" required>
       </div>
 
       <div> 
         <label for="partOfDiet">Part of my diet:</label>
-        <input type="checkbox" name="partOfDiet" id="partOfDiet">
+        <input type="checkbox" name="partOfDiet" id="partOfDiet" <%= food.partOfDiet ? 'checked' : '' %>>
       </div>
 
       <div> 
         <label for="notes">Notes:</label>
-        <input type="text" name="notes" id="notes">
+        <input type="text" name="notes" id="notes" value="<%= food.notes %>">
       </div>
 
       <div> 
         <label for="friendComment">Friend comment:</label>
-        <input type="text" name="friendComment" id="friendComment">
+        <input type="text" name="friendComment" id="friendComment" value="<%= food.friendComment %>">
       </div>
 
       <div> 
-        <button type="submit">Add New Product</button>
+        <button type="submit">Update Product</button>
       </div>
     </form>
     
